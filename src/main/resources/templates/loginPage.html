@@ -6,17 +6,20 @@
 </head>
 <body>
 
-<h1>Welcome to Sign Up</h1>
+<h1>Welcome to Login</h1>
 <hr>
-<form method="POST" action="/signupPost">
+<span th:text="${signupSuccess}" style="color: green"></span>
+
+<form method="POST" action="loginPost">
     Username: <input type="text" name="username"><br><br>
     Password: <input type="password" name="password"><br><br>
-    <input type="submit" value="SignUp">
-
+    <input type="submit" value="Login">
 </form>
+
+<span th:text="${loginError}" style="color: red"></span>
+
 <br><br>
 <hr>
 <a href="/">Back</a>
-
 </body>
 </html>
