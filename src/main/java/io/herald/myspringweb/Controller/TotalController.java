@@ -4,6 +4,7 @@ package io.herald.myspringweb.Controller;
 import io.herald.myspringweb.Model.UserTable;
 import io.herald.myspringweb.Repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,8 +49,15 @@ public class TotalController {
         //Repository login
         if(uRepo.existsByUsernameAndPassword(username,hashPassword)){
 
+            //Session revolves around the http requests, we are trying to
+            //get a running session with the code
+            HttpSession session = request.getSession();
+            session.setAttribute("username",username);
+
+
             List<UserTable> users = uRepo.findAll();
             model.addAttribute("userlist",users);
+
             return "homePage";
         }
 
@@ -79,4 +87,8 @@ public class TotalController {
         return "loginPage";
     }
 
+    @GetMapping("/home")
+    public String homePage(){
+        return "homePage";
+    }
 }

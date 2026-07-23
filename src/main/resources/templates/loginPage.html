@@ -8,6 +8,7 @@
 
 <h1>Welcome to Login</h1>
 <hr>
+<span th:text="${message}" style="color: red"></span>
 <span th:text="${signupSuccess}" style="color: green"></span>
 
 <form method="POST" action="loginPost">
@@ -17,6 +18,8 @@
 </form>
 
 <span th:text="${loginError}" style="color: red"></span>
+<span th:text="${logOut}" style="color: green"></span>
+
 
 <br><br>
 <hr>
