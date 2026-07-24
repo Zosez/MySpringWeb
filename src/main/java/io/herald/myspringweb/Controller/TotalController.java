@@ -88,7 +88,11 @@ public class TotalController {
     }
 
     @GetMapping("/home")
-    public String homePage(){
+    public String homePage(Model m){
+
+        m.addAttribute("userlist",uRepo.findAll());
         return "homePage";
     }
+    //Model attribute is only for the upcoming page
+    //Session attribute is for the whole session
 }

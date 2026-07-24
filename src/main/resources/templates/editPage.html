@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit page</title>
+</head>
+<body>
+
+<div th:insert="navbar.html"></div>
+
+<h1>Edit Page</h1>
+
+<form method="POST" action="editPage">
+
+
+    ID: <input type="number" readonly th:value="${userDetails.getId()}" name="id">
+    Username: <input type="text" th:value="${userDetails.getUsername()}" name="username">
+    <input type="hidden" th:value="${userDetails.getPassword()}" name="password">
+
+    <input type="submit" value="Edit">
+</form>
+
+</body>
+</html>
