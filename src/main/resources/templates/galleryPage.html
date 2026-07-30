@@ -9,6 +9,18 @@
 <div th:insert="navbar.html"> </div>
 
 <h1>Welcome Gallery Page!!!</h1>
+<hr>
 
+<form method="POST" action="galleryPost" enctype="multipart/form-data">
+    <input type="file" name="imgFile">
+    <input type="submit" value="Upload Image">
+</form>
+
+<hr>
+<h4>Images from TiDB: </h4>
+
+<span th:each="image:${session.totalImages}">
+    <img th:src=" 'data:image/jpeg;base64,' + ${image.getImage()}">
+</span>
 </body>
 </html>
