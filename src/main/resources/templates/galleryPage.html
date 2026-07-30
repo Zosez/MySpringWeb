@@ -19,8 +19,10 @@
 <hr>
 <h4>Images from TiDB: </h4>
 
-<span th:each="image:${session.totalImages}">
-    <img th:src=" 'data:image/jpeg;base64,' + ${image.getImage()}">
+<span th:each="image : ${session.images}">
+
+    <img th:src=" 'data:image/jpeg;base64,' + ${image.getImage()}" width="200" height="200">
+
 </span>
 </body>
 </html>

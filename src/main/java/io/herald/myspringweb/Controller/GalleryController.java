@@ -54,7 +54,7 @@ public class GalleryController {
 
         }
 
-        session.setAttribute("totalImages",imgRepo.findAll());
+        session.setAttribute("images",imgRepo.findAll());
 
         return "galleryPage";
     }

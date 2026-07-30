@@ -1,0 +1,28 @@
+package io.herald.myspringweb.Configuration;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class CloudinaryConfig {
+
+    @Bean
+    public Cloudinary cloudinary(){
+
+        return new Cloudinary(
+                ObjectUtils.asMap(
+
+                 "cloud_name","ka2wqq08",
+                 "api_key","225534157523832",
+                 "api_secret","nMfRria-OSZ5WNlQfQSAYtZr_Zk",
+                 "secure",true
+
+                )
+        );
+
+    }
+
+
+}
