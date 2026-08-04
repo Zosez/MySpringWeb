@@ -6,6 +6,8 @@ import io.herald.myspringweb.Repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
@@ -22,6 +24,9 @@ public class TotalController {
     //functions and APIs to a class/interface object no new keyword is required
     @Autowired
     private UserRepository uRepo;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @GetMapping("/")
     public String firstPage(){
@@ -71,8 +76,16 @@ public class TotalController {
     public String signupPost(HttpServletRequest request,Model model){
 
         String username, password;
+        String email = request.getParameter("email");
         username = request.getParameter("username");
         password = request.getParameter("password");
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(email);
+        mailMessage.setSubject("Signup Successfully");
+        mailMessage.setText("Welcome" + username +" !");
+
+        mailSender.send(mailMessage);
 
         //md5- DigestUtils
         String hashPassword = DigestUtils.md5DigestAsHex(password.getBytes());
